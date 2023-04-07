@@ -10,47 +10,53 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:shadowColor="#000000"
+        android:text="@string/app_name"
         android:textColor="#333333"
         android:textSize="96sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131"
-        tools:text="@string/app_name" />
+        app:layout_constraintVertical_bias="0.131" />
 
     <Button
         android:id="@+id/createMeetupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
+        android:backgroundTint="#E91E63"
         android:paddingTop="40dp"
         android:paddingBottom="40dp"
+        android:text="@string/create_meetup"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:theme="@style/Button.Primary"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleText"
-        tools:text="@string/create_meetup" />
+        app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
     <Button
         android:id="@+id/viewMeetupsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#E9651E"
         android:paddingTop="40dp"
         android:paddingBottom="40dp"
+        android:text="@string/view_meetups"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:theme="@style/Button.Secondary"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createMeetupButton"
-        app:layout_constraintVertical_bias="0.267"
-        tools:text="@string/view_meetups" />
+        app:layout_constraintVertical_bias="0.267" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

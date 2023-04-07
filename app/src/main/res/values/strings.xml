@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Puncty</string>
-    <string name="create_meetup">Treffen erstellen 👥</string>
-    <string name="view_meetups">Geplante Treffen 🔎</string>
+    <string name="create_meetup">Treffen erstellen 👥⚙</string>
+    <string name="view_meetups">Geplante Treffen 🔎📓</string>
 </resources>
