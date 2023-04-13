@@ -6,7 +6,11 @@
     <string name="create_meetup_emotes">Treffen erstellen 👥⚙</string>
     <string name="view_meetups">Geplante Treffen 🔎📓</string>
     <string name="create_button">erstellen</string>
-    <string name="location_hint">Ort auswählen...</string>
-    <string name="date_hint">Datum eingeben...</string>
-    <string name="time_hint">Zeit eingeben...</string>
+    <string name="location_hint">Ort</string>
+    <string name="date_hint">Datum</string>
+    <string name="time_hint">Uhrzeit</string>
+    <string name="username">Nutzername</string>
+    <string name="email_address">Email</string>
+    <string name="password">Passwort</string>
+    <string name="confirm_password">Passwort bestätigen</string>
 </resources>

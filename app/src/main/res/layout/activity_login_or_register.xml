@@ -17,7 +17,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titleText2">
 
         <Button
-            android:id="@+id/createMeetupButton2"
+            android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -31,7 +31,7 @@
             app:cornerRadius="10dp" />
 
         <Button
-            android:id="@+id/viewMeetupsButton2"
+            android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="96dp"

@@ -22,6 +22,12 @@
         <item name="android:textColorHint">#7F7F7F</item>
         <item name="android:layout_marginTop">15sp</item>
     </style>
+    <style name="SubmitButton" parent="ThemeOverlay.AppCompat">
+        <item name="backgroundTint">#E91E63</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">20sp</item>
+        <item name="android:layout_marginTop">20sp</item>
+    </style>
     <style name="Button.Primary" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@android:color/holo_orange_light</item>
     </style>
