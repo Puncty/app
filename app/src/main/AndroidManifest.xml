@@ -12,6 +12,21 @@
         android:theme="@style/Theme.PunctyApp"
         tools:targetApi="31">
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginOrRegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewMeetupsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateMeetupActivitiy"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

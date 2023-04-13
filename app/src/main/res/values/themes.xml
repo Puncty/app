@@ -12,6 +12,15 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="textInputStyle">@style/TextInputLayoutTheme</item>
+    </style>
+    <style name="TextInputLayoutTheme" parent="Widget.Design.TextInputLayout">
+        <item name="android:textSize">20sp</item>
+        <item name="android:background">@drawable/rounded_edit_text</item>
+        <item name="android:padding">20sp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:textColorHint">#7F7F7F</item>
+        <item name="android:layout_marginTop">15sp</item>
     </style>
     <style name="Button.Primary" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@android:color/holo_orange_light</item>

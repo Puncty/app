@@ -4,42 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LoginOrRegisterActivity">
 
     <LinearLayout
-        android:layout_width="304dp"
-        android:layout_height="414dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="295dp"
+        android:layout_height="406dp"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleText"
-        app:layout_constraintVertical_bias="0.341">
+        app:layout_constraintTop_toBottomOf="@+id/titleText2">
 
         <Button
-            android:id="@+id/createMeetupButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/createMeetupButton2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="60dp"
             android:backgroundTint="#E91E63"
             android:paddingTop="40dp"
             android:paddingBottom="40dp"
-            android:text="@string/create_meetup_emotes"
+            android:text="@string/login"
             android:textSize="24sp"
             android:textStyle="bold"
             android:theme="@style/Button.Primary"
             app:cornerRadius="10dp" />
 
         <Button
-            android:id="@+id/viewMeetupsButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/viewMeetupsButton2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="96dp"
             android:backgroundTint="#E9651E"
             android:paddingTop="40dp"
             android:paddingBottom="40dp"
-            android:text="@string/view_meetups"
+            android:text="@string/register"
             android:textSize="24sp"
             android:textStyle="bold"
             android:theme="@style/Button.Secondary"
@@ -47,7 +46,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/titleText"
+        android:id="@+id/titleText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:shadowColor="#000000"

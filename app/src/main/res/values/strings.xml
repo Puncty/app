@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Puncty</string>
-    <string name="create_meetup">Treffen erstellen 👥⚙</string>
+    <string name="login">Anmelden</string>
+    <string name="register">Registrieren</string>
+    <string name="create_meetup_plain">Treffen erstellen</string>
+    <string name="create_meetup_emotes">Treffen erstellen 👥⚙</string>
     <string name="view_meetups">Geplante Treffen 🔎📓</string>
+    <string name="create_button">erstellen</string>
+    <string name="location_hint">Ort auswählen...</string>
+    <string name="date_hint">Datum eingeben...</string>
+    <string name="time_hint">Zeit eingeben...</string>
 </resources>
