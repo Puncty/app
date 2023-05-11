@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        if (Puncty.getInstance() == null) {
+        if (!Puncty.exists()) {
             startActivity(new Intent(this, LoginOrRegisterActivity.class));
             return;
         }

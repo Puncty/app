@@ -30,6 +30,10 @@ public class Puncty {
         return new UserCollection(session);
     }
 
+    public static boolean exists() {
+        return instance != null;
+    }
+
     public static @NonNull Puncty create(Session session) {
         return new Puncty(session);
     }
