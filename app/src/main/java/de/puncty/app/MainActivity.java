@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         if (Puncty.getInstance() == null) {
-            startActivity(new Intent(this, LoginOrRegisterActivity.class));
-            return;
+          startActivity(new Intent(this, LoginOrRegisterActivity.class));
+        return;
         }
 
         setContentView(R.layout.activity_main);
@@ -23,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
         Button createMeetupButton = findViewById(R.id.createMeetupButton);
         createMeetupButton.setOnClickListener(v -> {
             startActivity(new Intent(this, CreateMeetupActivitiy.class));
+        });
+        Button viewMeetupsButton = findViewById(R.id.viewMeetupsButton);
+        viewMeetupsButton.setOnClickListener(v -> {
+            startActivity(new Intent(this, ViewMeetupsActivity.class));
         });
     }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/templateCardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="#E41900">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/meetupLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="20sp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="10dp"
+            android:text="Ort:" />
+
+        <TextView
+            android:id="@+id/meetupDate"
+            android:layout_width="wrap_content"
+            android:layout_height="20sp"
+            android:layout_below="@+id/meetupLocation"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="10sp"
+            android:text="Datum:" />
+
+        <TextView
+            android:id="@+id/meetupTime"
+            android:layout_width="wrap_content"
+            android:layout_height="20sp"
+            android:layout_below="@+id/meetupDate"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="10sp"
+            android:text="Uhrzeit:" />
+
+        <TextView
+            android:id="@+id/meetupMembers"
+            android:layout_width="wrap_content"
+            android:layout_height="20sp"
+            android:layout_below="@+id/meetupTime"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            android:text="Mitglieder:" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
