@@ -22,4 +22,4 @@ jobs:
             - name: Build with Gradle
               run: ./gradlew assembleRelease
             - name: Deploy to puncty.de
-              run: "curl -X POST 'https://puncty.de/upload' --header 'Accept: */*' --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' --header 'Authorization: {{ secrets.PUNCTY_AUTH_TOKEN }}' --form 'file=@app/build/outputs/apl/release/app-release-unsigned.apk'"
+              run: "curl -X POST 'https://puncty.de/upload' --header 'Accept: */*' --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' --header 'Authorization: {{ secrets.PUNCTY_AUTH_TOKEN }}' --form 'file=@app/build/outputs/apk/release/app-release-unsigned.apk'"
