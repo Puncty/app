@@ -20,19 +20,21 @@ public class LoginActivity extends AppCompatActivity {
         EditText emailField = findViewById(R.id.regoisterUsernameTextEdit);
         EditText passwordField = findViewById(R.id.registerPasswordEditText);
         findViewById(R.id.submitRegisterButton).setOnClickListener(v -> {
-            String email = String.valueOf(emailField.getText());
-            String password = String.valueOf(passwordField.getText());
-            if (email.isEmpty() || password.isEmpty()) return;
+                    String email = String.valueOf(emailField.getText());
+                    String password = String.valueOf(passwordField.getText());
+                    if(email.isEmpty()||password.isEmpty())return;
 
-            try {
-                Requester r = new Requester(Puncty.BASE_URL);
-                Session s = Session.login(r, email, password);
-                Puncty.create(s);
-            } catch (BrokenResponse e) {
-                e.printStackTrace();
-            }
+            new Thread(() -> {
+                try {
+                        Requester r = new Requester(Puncty.BASE_URL);
+                        Session s = Session.login(r, email, password);
+                        Puncty.create(s);
+                    } catch(BrokenResponse e) {
+                        e.printStackTrace();
+                    }
 
-            startActivity(new Intent(this, MainActivity.class));
-        });
+                    startActivity(new Intent(this, MainActivity.class));
+                }).start();
+            });
+        }
     }
-}

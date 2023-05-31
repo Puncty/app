@@ -8,7 +8,7 @@ import com.puncty.lib.Session;
 import com.puncty.lib.UserCollection;
 
 public class Puncty {
-    public static final String BASE_URL = "https://api.johannespour.de";
+    public static final String BASE_URL = "https://puncty.johannespour.de";
 
     private static @Nullable Puncty instance;
     private final @NonNull Session session;
@@ -28,6 +28,10 @@ public class Puncty {
 
     public @NonNull UserCollection getUserCollection() {
         return new UserCollection(session);
+    }
+
+    public static boolean exists() {
+        return instance != null;
     }
 
     public static @NonNull Puncty create(Session session) {

@@ -29,17 +29,19 @@ public class RegisterActivity extends AppCompatActivity {
             String passwordConfirmation = String.valueOf(passwordConfirmationField.getText());
             if (username.isEmpty() || email.isEmpty() || password.isEmpty() || !password.equals(passwordConfirmation)) return;
 
-            try {
-                Requester r = new Requester(Puncty.BASE_URL);
-                Session s = Session.register(r, username, email, password);
-                Puncty.create(s);
-            } catch (BrokenResponse e) {
-                e.printStackTrace();
-            } catch (UserAlreadyExists e) {
-                System.err.println(e.getMessage());
-            }
+            new Thread(() -> {
+                try {
+                    Requester r = new Requester(Puncty.BASE_URL);
+                    Session s = Session.register(r, username, email, password);
+                    Puncty.create(s);
+                } catch (BrokenResponse e) {
+                    e.printStackTrace();
+                } catch (UserAlreadyExists e) {
+                    System.err.println(e.getMessage());
+                }
 
-            startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
+            }).start();
         });
     }
 }
