@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.puncty.lib.Meetup;
+import com.puncty.lib.MeetupCollection;
+import com.puncty.lib.exceptions.BrokenResponse;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,9 +25,16 @@ public class ViewMeetupsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MeetupCollection collection = new MeetupCollection(Puncty.getInstance().getSession());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_meetups);
         List<Meetup> meetups = new ArrayList<Meetup>();
+        try{
+            meetups = collection.joined();
+        } catch (BrokenResponse e) {
+            throw new RuntimeException(e);
+        }
+
 
         RecyclerView meetupContainer = findViewById(R.id.MeetupContainer);
         meetupContainer.setLayoutManager(new LinearLayoutManager(this));
