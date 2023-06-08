@@ -7,8 +7,10 @@
     <string name="view_meetups">Geplante Treffen 🔎📓</string>
     <string name="create_button">erstellen</string>
     <string name="location_hint">Ort</string>
-    <string name="date_hint">Datum</string>
-    <string name="time_hint">Uhrzeit</string>
+    <string name="day_hint">Tag</string>
+    <string name="moth_hint">Monat</string>
+    <string name="hour_hint">Stunde</string>
+    <string name="minute_hint">Minute</string>
     <string name="username">Nutzername</string>
     <string name="email_address">Email</string>
     <string name="password">Passwort</string>
