@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (Puncty.getInstance() == null) {
           startActivity(new Intent(this, LoginOrRegisterActivity.class));
-        return;
+            return;
         }
 
         setContentView(R.layout.activity_main);

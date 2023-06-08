@@ -30,11 +30,12 @@ public class ViewMeetupsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_meetups);
         List<Meetup> meetups = new ArrayList<Meetup>();
         try{
-            meetups = collection.joined();
+            if(collection.joined().size()!=0){
+                meetups = collection.joined();
+            }
         } catch (BrokenResponse e) {
             throw new RuntimeException(e);
         }
-
 
         RecyclerView meetupContainer = findViewById(R.id.MeetupContainer);
         meetupContainer.setLayoutManager(new LinearLayoutManager(this));
