@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import com.puncty.lib.Meetup;
 import com.puncty.lib.MeetupCollection;
 import com.puncty.lib.exceptions.BrokenResponse;
+import com.puncty.lib.exceptions.NotFound;
+import com.puncty.lib.exceptions.Unauthorized;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,16 +28,27 @@ public class ViewMeetupsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        MeetupCollection collection = new MeetupCollection(Puncty.getInstance().getSession());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_meetups);
-        List<Meetup> meetups = new ArrayList<Meetup>();
-        try{
-            if(collection.joined().size()!=0){
-                meetups = collection.joined();
+
+        // HTTPS Requests CAN NOT run in the main-Thread
+        new Thread(this::loadCards).start();
+    }
+
+    public void loadCards() {
+        MeetupCollection mc = new MeetupCollection(Puncty.getInstance().getSession());
+        List<Meetup> meetups = new ArrayList<>();
+        try {
+            List<String> ids = mc.joined();
+            for (String id : ids) {
+                meetups.add(mc.get(id));
             }
-        } catch (BrokenResponse e) {
-            throw new RuntimeException(e);
+        } catch (BrokenResponse e){
+            // do nothing
+        } catch (NotFound e) {
+            // do nothing
+        } catch (Unauthorized e) {
+            // do nothing
         }
 
         RecyclerView meetupContainer = findViewById(R.id.MeetupContainer);
