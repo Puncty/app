@@ -15,4 +15,8 @@
     <string name="email_address">Email</string>
     <string name="password">Passwort</string>
     <string name="confirm_password">Passwort bestätigen</string>
+    <string name="leave">Verlassen</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="invite">Einladen</string>
+    <string name="delete">Löschen</string>
 </resources>

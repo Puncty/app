@@ -1,6 +1,7 @@
 package de.puncty.app.components;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +17,15 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import de.puncty.app.MainActivity;
 import de.puncty.app.R;
+import de.puncty.app.ViewMeetupActivity;
+import de.puncty.app.utility.Constants;
 
 public class MeetupCard extends RecyclerView.Adapter<MeetupCard.ViewHolder> {
     List<Meetup> meetups;
     Context context;
     public static int[] colors;
-    final String[] month = {
-            "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"
-    };
 
     public MeetupCard(Context context, List<Meetup> meetups) {
         this.context = context;
@@ -42,10 +43,16 @@ public class MeetupCard extends RecyclerView.Adapter<MeetupCard.ViewHolder> {
         Calendar cal = new GregorianCalendar();
         cal.setTime(m.getDatetime());
         String time = String.format("%02d:%02d", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
-        String date = String.format("%d. %s", cal.get(Calendar.DAY_OF_MONTH), month[cal.get(Calendar.MONTH)]);
+        String date = String.format("%d. %s", cal.get(Calendar.DAY_OF_MONTH), Constants.month[cal.get(Calendar.MONTH)]);
         holder.locationAndTime.setText(String.format("%s / %s", m.getLocation(), time));
         holder.date.setText(date);
-        holder.card.setBackgroundColor(Color.parseColor("#" + Integer.toHexString(colors[position])));
+        int color = Color.parseColor("#" + Integer.toHexString(colors[position]));
+        holder.card.setBackgroundColor(color);
+        holder.card.setOnClickListener(v -> {
+            ViewMeetupActivity.meetup = m;
+            ViewMeetupActivity.color = color;
+            this.context.startActivity(new Intent(context, ViewMeetupActivity.class));
+        });
     }
 
     @Override
