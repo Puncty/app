@@ -27,20 +27,29 @@ public class RegisterActivity extends AppCompatActivity {
             String email = String.valueOf(emailField.getText());
             String password = String.valueOf(passwordField.getText());
             String passwordConfirmation = String.valueOf(passwordConfirmationField.getText());
-            if (username.isEmpty() || email.isEmpty() || password.isEmpty() || !password.equals(passwordConfirmation)) return;
+            if (username.isEmpty() || email.isEmpty() || password.isEmpty() || passwordConfirmation.isEmpty()) {
+                Toaster.error(this, "Bitte fülle alle Felder aus");
+                return;
+            }
+
+            if (!password.equals(passwordConfirmation)) {
+                Toaster.error(this, "Passwörter stimmen nicht überein");
+                return;
+            }
 
             new Thread(() -> {
                 try {
                     Requester r = new Requester(Puncty.BASE_URL);
                     Session s = Session.register(r, username, email, password);
                     Puncty.create(s);
+                    startActivity(new Intent(this, MainActivity.class));
                 } catch (BrokenResponse e) {
+                    Toaster.error(this, "Etwas ist schief gelaufen...");
                     e.printStackTrace();
                 } catch (UserAlreadyExists e) {
+                    Toaster.error(this, "Ein Nutzer mit dieser E-Mail existiert bereits");
                     System.err.println(e.getMessage());
                 }
-
-                startActivity(new Intent(this, MainActivity.class));
             }).start();
         });
     }
