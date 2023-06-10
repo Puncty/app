@@ -3,6 +3,7 @@ package de.puncty.app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Looper;
 import android.widget.EditText;
@@ -33,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
                         Requester r = new Requester(Puncty.BASE_URL);
                         Session s = Session.login(r, email, password);
                         Puncty.create(s);
+                        SharedPreferences creds = getSharedPreferences("credentials", MODE_PRIVATE);
+                        creds.edit().putString("email", email).putString("password", password).apply();
                         startActivity(new Intent(this, MainActivity.class));
                     } catch(Exception e) {
                         Toaster.error(this, "E-Mail oder Passwort ist falsch");

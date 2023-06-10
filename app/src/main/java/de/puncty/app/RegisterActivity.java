@@ -3,6 +3,7 @@ package de.puncty.app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
 
@@ -42,6 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
                     Requester r = new Requester(Puncty.BASE_URL);
                     Session s = Session.register(r, username, email, password);
                     Puncty.create(s);
+                    SharedPreferences creds = getSharedPreferences("credentials", MODE_PRIVATE);
+                    creds.edit().putString("email", email).putString("password", password).apply();
                     startActivity(new Intent(this, MainActivity.class));
                 } catch (BrokenResponse e) {
                     Toaster.error(this, "Etwas ist schief gelaufen...");
