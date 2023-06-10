@@ -1,4 +1,4 @@
-package de.puncty.app;
+package de.puncty.app.utility;
 
 import android.widget.Toast;
 

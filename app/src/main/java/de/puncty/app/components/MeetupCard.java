@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.puncty.lib.Meetup;
@@ -20,6 +21,7 @@ import de.puncty.app.R;
 public class MeetupCard extends RecyclerView.Adapter<MeetupCard.ViewHolder> {
     List<Meetup> meetups;
     Context context;
+    public static int[] colors;
     final String[] month = {
             "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"
     };
@@ -43,23 +45,7 @@ public class MeetupCard extends RecyclerView.Adapter<MeetupCard.ViewHolder> {
         String date = String.format("%d. %s", cal.get(Calendar.DAY_OF_MONTH), month[cal.get(Calendar.MONTH)]);
         holder.locationAndTime.setText(String.format("%s / %s", m.getLocation(), time));
         holder.date.setText(date);
-    }
-
-    public String setColor(float r, float g, int b) {
-        String color = "#";
-        if (r >= 16) {
-            color += Integer.toHexString((int) r);
-        } else {
-            color += "0" + Integer.toHexString((int) r);
-        }
-        if (g >= 16) {
-            color += Integer.toHexString((int) g);
-        } else {
-            color += "0" + Integer.toHexString((int) g);
-        }
-
-        color += Integer.toHexString(b);
-        return color;
+        holder.card.setBackgroundColor(Color.parseColor("#" + Integer.toHexString(colors[position])));
     }
 
     @Override
@@ -70,12 +56,14 @@ public class MeetupCard extends RecyclerView.Adapter<MeetupCard.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView locationAndTime;
         TextView date;
+        CardView card;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             this.locationAndTime = itemView.findViewById(R.id.meetupLocationAndTimeText);
             this.date = itemView.findViewById(R.id.meetupDateText);
+            this.card = itemView.findViewById(R.id.meetupCardView);
         }
     }
 }

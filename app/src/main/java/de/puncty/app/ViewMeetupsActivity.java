@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.puncty.app.components.MeetupCard;
+import de.puncty.app.utility.Interpolator;
 
 public class ViewMeetupsActivity extends AppCompatActivity {
 
@@ -45,6 +46,7 @@ public class ViewMeetupsActivity extends AppCompatActivity {
         }
 
         runOnUiThread(() -> {
+            MeetupCard.colors = Interpolator.interpolate(0xef221f, 0x1fef76, meetups.size() + 1);
             RecyclerView meetupContainer = findViewById(R.id.MeetupContainer);
             meetupContainer.setLayoutManager(new LinearLayoutManager(this));
             meetupContainer.setAdapter(new MeetupCard(this, meetups));
