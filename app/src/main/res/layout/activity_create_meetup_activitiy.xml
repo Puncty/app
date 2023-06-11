@@ -8,68 +8,132 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/create_meetup_plain"
         android:textAlignment="center"
+        android:maxLines="2"
         android:textColor="@color/titleColor"
-        android:textSize="60sp"
+        android:textSize="85sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.401" />
+        app:layout_constraintVertical_bias="0.100000024" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="351dp"
-        android:layout_height="351dp"
-        android:layout_marginBottom="92dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="282dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <EditText
             android:id="@+id/editTextTextPostalAddress2"
             style="@style/TextInputLayoutTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
             android:ems="10"
             android:hint="@string/location_hint"
-            android:inputType="textPostalAddress" />
+            android:inputType="textPostalAddress"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <EditText
-            android:id="@+id/editTextDate2"
+            android:id="@+id/editTextDay"
             style="@style/TextInputLayoutTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
-            android:hint="@string/date_hint"
-            android:inputType="date" />
+            android:hint="@string/day_hint"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/editTextHour"
+            app:layout_constraintEnd_toStartOf="@+id/editTextMonth"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress2" />
 
         <EditText
-            android:id="@+id/editTextTime"
+            android:id="@+id/editTextMonth"
             style="@style/TextInputLayoutTheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="00dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:ems="10"
-            android:hint="@string/time_hint"
-            android:inputType="time" />
+            android:hint="@string/moth_hint"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/editTextHour"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editTextDay"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress2" />
 
-        <Button
-            android:id="@+id/submitButton"
-            style="@style/SubmitButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20sp"
-            android:backgroundTint="#E91E63"
-            android:capitalize="none"
-            android:padding="20sp"
-            android:text="@string/create_button"
-            android:textSize="20sp" />
-    </LinearLayout>
+        <EditText
+            android:id="@+id/editTextHour"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:hint="@string/hour_hint"
+            android:inputType="time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/editTextMinute"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/editTextMinute"
+            style="@style/TextInputLayoutTheme"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:hint="@string/minute_hint"
+            android:inputType="time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editTextHour"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/submitButton"
+        style="@style/SubmitButton"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#E91E63"
+        android:capitalize="none"
+        android:padding="20sp"
+        android:text="@string/create_button"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
