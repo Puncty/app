@@ -13,7 +13,7 @@
         android:scaleX=".9"
         android:scaleY=".95"
         app:cardBackgroundColor="#aaa"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,21 +55,10 @@
                 android:textSize="34sp"
                 tools:text="DD. MONTH" />
 
-            <TextView
-                android:id="@+id/membersTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="30sp"
-                android:paddingTop="30sp"
-                android:textColor="#EEEEEE"
-                android:textSize="24sp"
-                tools:text="DD. MONTH" />
-
             <Button
                 android:id="@+id/meetupInviteButton"
                 android:layout_width="342dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="200sp"
                 android:backgroundTint="#3BCD13"
                 android:text="@string/invite" />
 
