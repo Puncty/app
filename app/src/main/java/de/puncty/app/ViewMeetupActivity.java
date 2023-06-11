@@ -22,6 +22,7 @@ import java.util.GregorianCalendar;
 import de.puncty.app.utility.Constants;
 import de.puncty.app.utility.Iterator;
 import de.puncty.app.utility.Toaster;
+import de.puncty.app.utility.Util;
 
 public class ViewMeetupActivity extends AppCompatActivity {
 
@@ -62,16 +63,7 @@ public class ViewMeetupActivity extends AppCompatActivity {
         Button deleteButton = findViewById(R.id.meetupDeleteButton);
 
         inviteButton.setOnClickListener(v -> {
-            try {
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Puncty");
-                String msg = String.format("%s/meetup/%s/join", Puncty.BASE_URL, ViewMeetupActivity.meetup.getId());
-                shareIntent.putExtra(Intent.EXTRA_TEXT, msg);
-                startActivity(Intent.createChooser(shareIntent, "wen willst du einladen?"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            Util.invite(this, ViewMeetupActivity.meetup.getId());
         });
 
         editButton.setOnClickListener(v -> {
@@ -103,7 +95,7 @@ public class ViewMeetupActivity extends AppCompatActivity {
         });
 
         new Thread(() -> {
-            UserCollection uc = new UserCollection(Puncty.getInstance().getSession());
+            UserCollection uc = Puncty.getInstance().getUserCollection();
             boolean isAdmin = false;
             try {
                 isAdmin = ViewMeetupActivity.meetup.getAdmin().equals(uc.getMe());

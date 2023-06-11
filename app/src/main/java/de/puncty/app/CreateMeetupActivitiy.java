@@ -2,8 +2,14 @@ package de.puncty.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 import com.puncty.lib.Meetup;
 import com.puncty.lib.MeetupCollection;
@@ -12,42 +18,73 @@ import com.puncty.lib.exceptions.BrokenResponse;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
+import de.puncty.app.utility.Toaster;
+import de.puncty.app.utility.Util;
 
 public class CreateMeetupActivitiy extends AppCompatActivity {
 
-    EditText locationText;
-    EditText monthText;
-    EditText dayText;
-    EditText hourText;
-    EditText minuteText;
+    private EditText locationText;
+    private EditText dateText;
+    private EditText timeText;
+    private GregorianCalendar datetime = new GregorianCalendar();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_meetup_activitiy);
 
         locationText = findViewById(R.id.editTextTextPostalAddress2);
-        monthText = findViewById(R.id.editTextMonth);
-        dayText = findViewById(R.id.editTextDay);
-        hourText = findViewById(R.id.editTextHour);
-        minuteText = findViewById(R.id.editTextMinute);
+        this.dateText = findViewById(R.id.editTextDate);
+
+        DatePicker tmpDate = new DatePicker(this);
+        this.dateText.setOnClickListener(v -> {
+            new DatePickerDialog.Builder(this)
+                    .setTitle("Datum des Treffens")
+                    .setView(tmpDate)
+                    .setPositiveButton("Setzen", (DialogInterface dialog, int which) -> {
+                        this.datetime.set(Calendar.DAY_OF_MONTH, tmpDate.getDayOfMonth());
+                        this.datetime.set(Calendar.MONTH, tmpDate.getMonth());
+                        this.datetime.set(Calendar.YEAR, tmpDate.getYear());
+                        this.dateText.setText(String.format("%02d.%02d.%02d", tmpDate.getDayOfMonth(), tmpDate.getMonth(), tmpDate.getYear()));
+                    })
+                    .show();
+        });
+
+        TimePicker tmpTime = new TimePicker(this);
+        this.timeText = findViewById(R.id.editTextHour);
+        this.timeText.setOnClickListener(v -> {
+            new TimePickerDialog.Builder(this)
+                    .setTitle("Uhrzeit des Treffens")
+                    .setView(tmpTime)
+                    .setPositiveButton("Setzen", (DialogInterface dialog, int which) -> {
+                        this.datetime.set(Calendar.HOUR, tmpTime.getHour());
+                        this.datetime.set(Calendar.MINUTE, tmpTime.getMinute());
+                        this.timeText.setText(String.format("%02d:%02d", tmpTime.getHour(), tmpTime.getMinute()));
+                    })
+                    .show();
+        });
+
+        findViewById(R.id.submitButton).setOnClickListener(v -> this.onButtonClick());
     }
 
-    private void onButtonClick() throws BrokenResponse {
-        boolean existaAlready = false;
-        MeetupCollection mc = Puncty.getInstance().getMeetupCollection();
-        LocalDateTime now = LocalDateTime.now();
-        int second = 0, minute = Integer.parseInt(String.valueOf(monthText.getText())), hour = Integer.parseInt(String.valueOf(hourText.getText())), day = Integer.parseInt(String.valueOf(dayText.getText())), month = Integer.parseInt(String.valueOf(monthText.getText())), year = now.getYear();
-        LocalDateTime meetupTime = LocalDateTime.of(year, month, day, hour, minute, second);
+    private void onButtonClick() {
+        new Thread(() -> {
+            if (this.locationText.length() == 0 || this.dateText.length() == 0 || this.timeText.length() == 0) {
+                Toaster.error(this, "Bitte fülle alle Felder aus");
+                return;
+            }
 
-        if(now.isAfter(meetupTime)){
-            meetupTime = LocalDateTime.of(year+1, month, day, hour, minute, second);
-        }
-
-        Instant instant = meetupTime.atZone(ZoneId.systemDefault()).toInstant();
-        Date meetupDate = Date.from(instant);
-
-        Meetup meetup = mc.create(meetupDate.getTime(), String.valueOf(locationText.getText()));
-
+            MeetupCollection mc = Puncty.getInstance().getMeetupCollection();
+            try {
+                String id = mc.create(this.datetime.getTime().getTime(), this.locationText.getText().toString());
+                startActivity(new Intent(this, ViewMeetupsActivity.class));
+                Util.invite(this, id);
+            } catch (BrokenResponse e) {
+                Toaster.error(this, "Etwas ist schief gelaufen...");
+            }
+        }).start();
     }
 }

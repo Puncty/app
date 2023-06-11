@@ -30,7 +30,7 @@ public class ViewMeetupsActivity extends AppCompatActivity {
     }
 
     public void loadCards() {
-        MeetupCollection mc = new MeetupCollection(Puncty.getInstance().getSession());
+        MeetupCollection mc = Puncty.getInstance().getMeetupCollection();
         List<Meetup> meetups = new ArrayList<>();
         try {
             List<String> ids = mc.joined();
