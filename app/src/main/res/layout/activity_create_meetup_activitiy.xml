@@ -63,7 +63,7 @@
             android:editable="false"
             android:ems="10"
             android:focusable="false"
-            android:hint="@string/day_hint"
+            android:hint="@string/date_hint"
             android:inputType="date"
             app:layout_constraintBottom_toTopOf="@+id/editTextHour"
             app:layout_constraintEnd_toEndOf="parent"
