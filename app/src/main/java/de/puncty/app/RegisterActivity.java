@@ -12,6 +12,8 @@ import com.puncty.lib.exceptions.BrokenResponse;
 import com.puncty.lib.exceptions.UserAlreadyExists;
 import com.puncty.lib.networking.Requester;
 
+import de.puncty.app.utility.Toaster;
+
 public class RegisterActivity extends AppCompatActivity {
 
     @Override

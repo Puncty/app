@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Looper;
 import android.widget.EditText;
 
 import com.puncty.lib.Session;
-import com.puncty.lib.exceptions.BrokenResponse;
 import com.puncty.lib.networking.Requester;
+
+import de.puncty.app.utility.Toaster;
 
 public class LoginActivity extends AppCompatActivity {
 
