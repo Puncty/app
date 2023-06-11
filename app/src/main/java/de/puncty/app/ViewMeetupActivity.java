@@ -42,7 +42,7 @@ public class ViewMeetupActivity extends AppCompatActivity {
         this.location = findViewById(R.id.meetupLocationTextView);
         this.timeView = findViewById(R.id.meetupTimeTextView);
         this.dateView = findViewById(R.id.meetupDateTextView);
-        this.membersView = findViewById(R.id.membersTextView);
+        this.membersView = findViewById(R.id.meetupMembersTextView);
         this.cardView = findViewById(R.id.fullsizeMeetupCardView);
 
         Calendar cal = new GregorianCalendar();
@@ -62,7 +62,16 @@ public class ViewMeetupActivity extends AppCompatActivity {
         Button deleteButton = findViewById(R.id.meetupDeleteButton);
 
         inviteButton.setOnClickListener(v -> {
-            // invite someone
+            try {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Puncty");
+                String msg = String.format("%s/meetup/%s/join", Puncty.BASE_URL, ViewMeetupActivity.meetup.getId());
+                shareIntent.putExtra(Intent.EXTRA_TEXT, msg);
+                startActivity(Intent.createChooser(shareIntent, "wen willst du einladen?"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         editButton.setOnClickListener(v -> {
