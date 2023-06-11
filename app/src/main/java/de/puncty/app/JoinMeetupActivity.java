@@ -42,8 +42,7 @@ public class JoinMeetupActivity extends AppCompatActivity {
 
     public void joinMeetup(String id) {
         new Thread(() -> {
-            Session s = Puncty.getInstance().getSession();
-            MeetupCollection mc = new MeetupCollection(s);
+            MeetupCollection mc = Puncty.getInstance().getMeetupCollection();
             try {
                 mc.join(id);
             } catch (Exception e) {

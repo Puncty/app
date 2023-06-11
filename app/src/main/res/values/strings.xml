@@ -12,6 +12,8 @@
     <string name="hour_hint">Stunde</string>
     <string name="minute_hint">Minute</string>
     <string name="username">Nutzername</string>
+    <string name="date_hint">Datum</string>
+    <string name="time_hint">Uhrzeit</string>
     <string name="email_address">Email</string>
     <string name="password">Passwort</string>
     <string name="confirm_password">Passwort bestätigen</string>
