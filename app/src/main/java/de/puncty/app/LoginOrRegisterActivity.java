@@ -9,6 +9,8 @@ import android.os.Bundle;
 import com.puncty.lib.Session;
 import com.puncty.lib.networking.Requester;
 
+import de.puncty.app.utility.Util;
+
 public class LoginOrRegisterActivity extends AppCompatActivity {
 
     @Override
@@ -24,21 +26,13 @@ public class LoginOrRegisterActivity extends AppCompatActivity {
             startActivity(new Intent(this, RegisterActivity.class));
         });
 
-        SharedPreferences creds = getSharedPreferences("credentials", MODE_PRIVATE);
-        if (creds.contains("email") && creds.contains("password")) {
-            new Thread(() -> {
-                String email = creds.getString("email", "");
-                String pw = creds.getString("password", "");
+        Util.attemptLogin(this, success -> {
+            if (success) {
+                this.startActivity(new Intent(this, MainActivity.class));
+            }
 
-                Requester r = new Requester(Puncty.BASE_URL);
-                try {
-                    Puncty.create(Session.login(r, email, pw));
-                    startActivity(new Intent(this, MainActivity.class));
-                } catch (Exception e) {
-                    // do nothing
-                }
-            }).start();
-        }
+            return 0;
+        });
 
     }
 }

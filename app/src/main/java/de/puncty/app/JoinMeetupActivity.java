@@ -11,6 +11,8 @@ import com.puncty.lib.Session;
 
 import java.util.List;
 
+import de.puncty.app.utility.Util;
+
 public class JoinMeetupActivity extends AppCompatActivity {
 
     @Override
@@ -23,15 +25,27 @@ public class JoinMeetupActivity extends AppCompatActivity {
         String meetupId = params.get(0);
 
         if (!Puncty.exists()) {
-            startActivity(new Intent(this, LoginOrRegisterActivity.class));
-            return;
+            Util.attemptLogin(this, success -> {
+                if (success) {
+                    joinMeetup(meetupId);
+                } else {
+                    this.startActivity(new Intent(this, LoginOrRegisterActivity.class));
+                }
+
+                return 0;
+            });
+        } else {
+            joinMeetup(meetupId);
         }
 
+    }
+
+    public void joinMeetup(String id) {
         new Thread(() -> {
             Session s = Puncty.getInstance().getSession();
             MeetupCollection mc = new MeetupCollection(s);
             try {
-                mc.join(meetupId);
+                mc.join(id);
             } catch (Exception e) {
                 // do nothing
             } finally {
