@@ -17,7 +17,7 @@
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".JoinMeetupActivity"
             android:exported="true">
@@ -32,22 +32,22 @@
         </activity>
         <activity
             android:name=".ViewMeetupActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".LoginOrRegisterActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ViewMeetupsActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CreateMeetupActivitiy"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
