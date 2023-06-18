@@ -74,7 +74,7 @@ public class ViewMeetupActivity extends AppCompatActivity {
             new Thread(() -> {
                 try {
                     meetup.leave();
-                    this.startActivity(new Intent(this, ViewMeetupsActivity.class));
+                    finish();
                 } catch (BrokenResponse e) {
                     e.printStackTrace();
                 }
@@ -85,7 +85,8 @@ public class ViewMeetupActivity extends AppCompatActivity {
             new Thread(() -> {
                 try {
                     meetup.delete();
-                    this.startActivity(new Intent(this, ViewMeetupsActivity.class));
+                    startActivity(new Intent(this, ViewMeetupsActivity.class));
+                    finish();
                 } catch (BrokenResponse e) {
                     e.printStackTrace();
                 } catch (Unauthorized e) {
@@ -100,7 +101,7 @@ public class ViewMeetupActivity extends AppCompatActivity {
             try {
                 isAdmin = ViewMeetupActivity.meetup.getAdmin().equals(uc.getMe());
             } catch (BrokenResponse e) {
-                // do nothing
+                e.printStackTrace();
             }
             if (!isAdmin) {
                 runOnUiThread(() -> {

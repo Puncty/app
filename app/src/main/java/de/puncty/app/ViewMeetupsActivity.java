@@ -18,6 +18,7 @@ import java.util.List;
 import de.puncty.app.components.MeetupCard;
 import de.puncty.app.utility.Interpolator;
 import de.puncty.app.utility.Puncty;
+import de.puncty.app.utility.Toaster;
 
 public class ViewMeetupsActivity extends AppCompatActivity {
 
@@ -38,12 +39,9 @@ public class ViewMeetupsActivity extends AppCompatActivity {
             for (String id : ids) {
                 meetups.add(mc.get(id));
             }
-        } catch (BrokenResponse e){
-            // do nothing
-        } catch (NotFound e) {
-            // do nothing
-        } catch (Unauthorized e) {
-            // do nothing
+        } catch (Exception e){
+            Toaster.error(this, "Etwas ist schief gelaufen...");
+            e.printStackTrace();
         }
 
         runOnUiThread(() -> {

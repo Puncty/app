@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences creds = getSharedPreferences("credentials", MODE_PRIVATE);
                         creds.edit().putString("email", email).putString("password", password).apply();
                         startActivity(new Intent(this, MainActivity.class));
+                        finish();
                     } catch(Exception e) {
                         Toaster.error(this, "E-Mail oder Passwort ist falsch");
                         e.printStackTrace();

@@ -49,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
                     SharedPreferences creds = getSharedPreferences("credentials", MODE_PRIVATE);
                     creds.edit().putString("email", email).putString("password", password).apply();
                     startActivity(new Intent(this, MainActivity.class));
+                    finish();
                 } catch (BrokenResponse e) {
                     Toaster.error(this, "Etwas ist schief gelaufen...");
                     e.printStackTrace();

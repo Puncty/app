@@ -26,7 +26,7 @@ public class CreateMeetupActivitiy extends AppCompatActivity {
     private EditText locationText;
     private EditText dateText;
     private EditText timeText;
-    private GregorianCalendar datetime = new GregorianCalendar();
+    private final GregorianCalendar datetime = new GregorianCalendar();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +76,8 @@ public class CreateMeetupActivitiy extends AppCompatActivity {
             MeetupCollection mc = Puncty.getInstance().getMeetupCollection();
             try {
                 String id = mc.create(this.datetime.getTime().getTime(), this.locationText.getText().toString());
-                startActivity(new Intent(this, ViewMeetupsActivity.class));
+                finish();
+                startActivity(new Intent(this, MainActivity.class));
                 Util.invite(this, id);
             } catch (BrokenResponse e) {
                 Toaster.error(this, "Etwas ist schief gelaufen...");

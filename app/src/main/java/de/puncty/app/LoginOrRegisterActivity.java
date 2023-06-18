@@ -9,6 +9,7 @@ import android.os.Bundle;
 import com.puncty.lib.Session;
 import com.puncty.lib.networking.Requester;
 
+import de.puncty.app.utility.Puncty;
 import de.puncty.app.utility.Util;
 
 public class LoginOrRegisterActivity extends AppCompatActivity {
@@ -28,11 +29,11 @@ public class LoginOrRegisterActivity extends AppCompatActivity {
 
         Util.attemptLogin(this, success -> {
             if (success) {
-                this.startActivity(new Intent(this, MainActivity.class));
+                finish();
+                startActivity(new Intent(this, MainActivity.class));
             }
 
             return 0;
         });
-
     }
 }

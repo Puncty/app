@@ -17,12 +17,9 @@ public class SplashScreenActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         Handler delay = new Handler();
-        SplashScreenActivity context = this;
         delay.postDelayed(() -> {
-            Intent intent = new Intent(context, MainActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
         }, 1000);
     }
-
-
 }

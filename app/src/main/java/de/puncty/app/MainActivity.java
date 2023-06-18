@@ -18,10 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (!Puncty.exists()) {
             startActivity(new Intent(this, LoginOrRegisterActivity.class));
-            return;
-        }
-        if (Puncty.getInstance() == null) {
-          startActivity(new Intent(this, LoginOrRegisterActivity.class));
+            finish();
             return;
         }
 

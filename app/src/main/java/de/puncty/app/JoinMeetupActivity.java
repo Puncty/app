@@ -11,6 +11,7 @@ import com.puncty.lib.MeetupCollection;
 import java.util.List;
 
 import de.puncty.app.utility.Puncty;
+import de.puncty.app.utility.Toaster;
 import de.puncty.app.utility.Util;
 
 public class JoinMeetupActivity extends AppCompatActivity {
@@ -45,10 +46,12 @@ public class JoinMeetupActivity extends AppCompatActivity {
             MeetupCollection mc = Puncty.getInstance().getMeetupCollection();
             try {
                 mc.join(id);
+                Toaster.info(this, "Erfolgreich dem Treffen beigetreten");
             } catch (Exception e) {
-                // do nothing
+                Toaster.error(this, "Beim beitreten des Treffens ist ein Fehler aufgetreten...");
             } finally {
-                startActivity(new Intent(this, ViewMeetupsActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
             }
         }).start();
     }

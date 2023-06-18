@@ -9,6 +9,10 @@ public class Toaster {
         activity.runOnUiThread(() -> Toast.makeText(activity, text, duration).show());
     }
 
+    public static void info(AppCompatActivity activity, String text) {
+        Toaster.print(activity, text, Toast.LENGTH_SHORT);
+    }
+
     public static void error(AppCompatActivity activity, String text) {
         Toaster.print(activity, text, Toast.LENGTH_SHORT);
     }
