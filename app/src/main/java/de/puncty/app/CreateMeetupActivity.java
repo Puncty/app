@@ -35,8 +35,8 @@ public class CreateMeetupActivity extends AppCompatActivity {
         this.locationText = findViewById(R.id.editTextTextPostalAddress2);
         this.dateText = findViewById(R.id.editTextDate);
 
-        DatePicker tmpDate = new DatePicker(this);
         this.dateText.setOnClickListener(v -> {
+            DatePicker tmpDate = new DatePicker(this);
             new DatePickerDialog.Builder(this)
                     .setTitle("Datum des Treffens")
                     .setView(tmpDate)
@@ -45,14 +45,13 @@ public class CreateMeetupActivity extends AppCompatActivity {
                         this.datetime.set(Calendar.MONTH, tmpDate.getMonth());
                         this.datetime.set(Calendar.YEAR, tmpDate.getYear());
                         this.dateText.setText(String.format("%02d.%02d.%02d", tmpDate.getDayOfMonth(), tmpDate.getMonth(), tmpDate.getYear()));
-                    })
-                    .show();
+                    }).show();
         });
 
-        TimePicker tmpTime = new TimePicker(this);
-        tmpTime.setIs24HourView(true);
         this.timeText = findViewById(R.id.editTextHour);
         this.timeText.setOnClickListener(v -> {
+            TimePicker tmpTime = new TimePicker(this);
+            tmpTime.setIs24HourView(true);
             new TimePickerDialog.Builder(this)
                     .setTitle("Uhrzeit des Treffens")
                     .setView(tmpTime)
