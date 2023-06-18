@@ -46,7 +46,6 @@ public class CreateMeetupActivity extends AppCompatActivity {
                         this.datetime.set(Calendar.YEAR, tmpDate.getYear());
                         this.dateText.setText(String.format("%02d.%02d.%02d", tmpDate.getDayOfMonth(), tmpDate.getMonth(), tmpDate.getYear()));
                     })
-                    .setOnDismissListener(x -> this.finish())
                     .show();
         });
 
@@ -62,7 +61,6 @@ public class CreateMeetupActivity extends AppCompatActivity {
                         this.datetime.set(Calendar.MINUTE, tmpTime.getMinute());
                         this.timeText.setText(String.format("%02d:%02d", tmpTime.getHour(), tmpTime.getMinute()));
                     })
-                    .setOnDismissListener(x -> this.finish())
                     .show();
         });
 
