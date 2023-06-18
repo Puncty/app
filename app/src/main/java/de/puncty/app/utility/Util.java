@@ -35,7 +35,6 @@ public class Util {
         try {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Puncty");
             String msg = String.format("%s/meetup/%s/join", Puncty.BASE_URL, meetupId);
             shareIntent.putExtra(Intent.EXTRA_TEXT, msg);
             ctx.startActivity(Intent.createChooser(shareIntent, "Wen willst du einladen?"));
