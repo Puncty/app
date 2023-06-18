@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button createMeetupButton = findViewById(R.id.createMeetupButton);
         createMeetupButton.setOnClickListener(v -> {
-            startActivity(new Intent(this, CreateMeetupActivitiy.class));
+            startActivity(new Intent(this, CreateMeetupActivity.class));
         });
         Button viewMeetupsButton = findViewById(R.id.viewMeetupsButton);
         viewMeetupsButton.setOnClickListener(v -> {

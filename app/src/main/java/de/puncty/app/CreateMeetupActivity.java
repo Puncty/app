@@ -21,7 +21,7 @@ import de.puncty.app.utility.Puncty;
 import de.puncty.app.utility.Toaster;
 import de.puncty.app.utility.Util;
 
-public class CreateMeetupActivitiy extends AppCompatActivity {
+public class CreateMeetupActivity extends AppCompatActivity {
 
     private EditText locationText;
     private EditText dateText;
@@ -32,7 +32,7 @@ public class CreateMeetupActivitiy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_meetup_activitiy);
 
-        locationText = findViewById(R.id.editTextTextPostalAddress2);
+        this.locationText = findViewById(R.id.editTextTextPostalAddress2);
         this.dateText = findViewById(R.id.editTextDate);
 
         DatePicker tmpDate = new DatePicker(this);
@@ -46,10 +46,12 @@ public class CreateMeetupActivitiy extends AppCompatActivity {
                         this.datetime.set(Calendar.YEAR, tmpDate.getYear());
                         this.dateText.setText(String.format("%02d.%02d.%02d", tmpDate.getDayOfMonth(), tmpDate.getMonth(), tmpDate.getYear()));
                     })
+                    .setOnDismissListener(x -> this.finish())
                     .show();
         });
 
         TimePicker tmpTime = new TimePicker(this);
+        tmpTime.setIs24HourView(true);
         this.timeText = findViewById(R.id.editTextHour);
         this.timeText.setOnClickListener(v -> {
             new TimePickerDialog.Builder(this)
@@ -60,6 +62,7 @@ public class CreateMeetupActivitiy extends AppCompatActivity {
                         this.datetime.set(Calendar.MINUTE, tmpTime.getMinute());
                         this.timeText.setText(String.format("%02d:%02d", tmpTime.getHour(), tmpTime.getMinute()));
                     })
+                    .setOnDismissListener(x -> this.finish())
                     .show();
         });
 

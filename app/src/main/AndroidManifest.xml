@@ -46,7 +46,7 @@
             android:name=".ViewMeetupsActivity"
             android:exported="true" />
         <activity
-            android:name=".CreateMeetupActivitiy"
+            android:name=".CreateMeetupActivity"
             android:exported="true" />
         <activity
             android:name=".SplashScreenActivity"
