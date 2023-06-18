@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +20,7 @@ import java.util.GregorianCalendar;
 
 import de.puncty.app.utility.Constants;
 import de.puncty.app.utility.Iterator;
+import de.puncty.app.utility.Puncty;
 import de.puncty.app.utility.Toaster;
 import de.puncty.app.utility.Util;
 

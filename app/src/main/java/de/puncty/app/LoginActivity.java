@@ -10,6 +10,7 @@ import android.widget.EditText;
 import com.puncty.lib.Session;
 import com.puncty.lib.networking.Requester;
 
+import de.puncty.app.utility.Puncty;
 import de.puncty.app.utility.Toaster;
 
 public class LoginActivity extends AppCompatActivity {

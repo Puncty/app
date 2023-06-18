@@ -7,10 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.puncty.lib.MeetupCollection;
-import com.puncty.lib.Session;
 
 import java.util.List;
 
+import de.puncty.app.utility.Puncty;
 import de.puncty.app.utility.Util;
 
 public class JoinMeetupActivity extends AppCompatActivity {

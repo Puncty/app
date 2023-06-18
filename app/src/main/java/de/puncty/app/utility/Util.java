@@ -9,10 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.puncty.lib.Session;
 import com.puncty.lib.networking.Requester;
 
-import de.puncty.app.MainActivity;
-import de.puncty.app.Puncty;
-import de.puncty.app.ViewMeetupActivity;
-
 public class Util {
     public static void attemptLogin(AppCompatActivity ctx, Predicate<Boolean, Integer> pred) {
         SharedPreferences creds = ctx.getSharedPreferences("credentials", Context.MODE_PRIVATE);

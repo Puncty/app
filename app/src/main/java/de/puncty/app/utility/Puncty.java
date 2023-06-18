@@ -1,4 +1,4 @@
-package de.puncty.app;
+package de.puncty.app.utility;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

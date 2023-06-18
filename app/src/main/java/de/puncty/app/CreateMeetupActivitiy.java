@@ -11,17 +11,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
-import com.puncty.lib.Meetup;
 import com.puncty.lib.MeetupCollection;
 import com.puncty.lib.exceptions.BrokenResponse;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
+import de.puncty.app.utility.Puncty;
 import de.puncty.app.utility.Toaster;
 import de.puncty.app.utility.Util;
 

@@ -17,6 +17,7 @@ import java.util.List;
 
 import de.puncty.app.components.MeetupCard;
 import de.puncty.app.utility.Interpolator;
+import de.puncty.app.utility.Puncty;
 
 public class ViewMeetupsActivity extends AppCompatActivity {
 

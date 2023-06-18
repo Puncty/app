@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import de.puncty.app.utility.Puncty;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
