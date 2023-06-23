@@ -48,7 +48,7 @@ public class ViewMeetupActivity extends AppCompatActivity {
 
         Calendar cal = new GregorianCalendar();
         cal.setTime(ViewMeetupActivity.meetup.getDatetime());
-        String time = String.format("%02d:%02d", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
+        String time = String.format("%02d:%02d", cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE));
         String date = String.format("%d. %s", cal.get(Calendar.DAY_OF_MONTH), Constants.month[cal.get(Calendar.MONTH)]);
         String members = String.join(", ", Iterator.map(ViewMeetupActivity.meetup.getMembers(), User::getName));
         this.location.setText(ViewMeetupActivity.meetup.getLocation());

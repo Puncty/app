@@ -56,7 +56,7 @@ public class CreateMeetupActivity extends AppCompatActivity {
                     .setTitle("Uhrzeit des Treffens")
                     .setView(tmpTime)
                     .setPositiveButton("Setzen", (DialogInterface dialog, int which) -> {
-                        this.datetime.set(Calendar.HOUR, tmpTime.getHour());
+                        this.datetime.set(Calendar.HOUR_OF_DAY, tmpTime.getHour());
                         this.datetime.set(Calendar.MINUTE, tmpTime.getMinute());
                         this.timeText.setText(String.format("%02d:%02d", tmpTime.getHour(), tmpTime.getMinute()));
                     })
