@@ -14,6 +14,7 @@ import java.util.List;
 
 import de.puncty.app.components.MeetupCard;
 import de.puncty.app.utility.ColorGenerator;
+import de.puncty.app.utility.MeetupSorter;
 import de.puncty.app.utility.Puncty;
 import de.puncty.app.utility.Toaster;
 
@@ -42,6 +43,7 @@ public class ViewMeetupsActivity extends AppCompatActivity {
         }
 
         runOnUiThread(() -> {
+            MeetupSorter.meetupSorter(meetups);
             MeetupCard.colors = ColorGenerator.generate(meetups.size());
             RecyclerView meetupContainer = findViewById(R.id.MeetupContainer);
             meetupContainer.setLayoutManager(new LinearLayoutManager(this));
