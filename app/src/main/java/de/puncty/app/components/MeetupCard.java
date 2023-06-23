@@ -42,7 +42,7 @@ public class MeetupCard extends RecyclerView.Adapter<MeetupCard.ViewHolder> {
         Meetup m = meetups.get(position);
         Calendar cal = new GregorianCalendar();
         cal.setTime(m.getDatetime());
-        String time = String.format("%02d:%02d", cal.get(Calendar.HOUR), cal.get(Calendar.MINUTE));
+        String time = String.format("%02d:%02d", cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE));
         String date = String.format("%d. %s", cal.get(Calendar.DAY_OF_MONTH), Constants.month[cal.get(Calendar.MONTH)]);
         holder.locationAndTime.setText(String.format("%s / %s", m.getLocation(), time));
         holder.date.setText(date);
