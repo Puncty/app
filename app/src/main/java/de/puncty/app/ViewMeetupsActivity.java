@@ -8,15 +8,12 @@ import android.os.Bundle;
 
 import com.puncty.lib.Meetup;
 import com.puncty.lib.MeetupCollection;
-import com.puncty.lib.exceptions.BrokenResponse;
-import com.puncty.lib.exceptions.NotFound;
-import com.puncty.lib.exceptions.Unauthorized;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.puncty.app.components.MeetupCard;
-import de.puncty.app.utility.Interpolator;
+import de.puncty.app.utility.ColorGenerator;
 import de.puncty.app.utility.Puncty;
 import de.puncty.app.utility.Toaster;
 
@@ -45,7 +42,7 @@ public class ViewMeetupsActivity extends AppCompatActivity {
         }
 
         runOnUiThread(() -> {
-            MeetupCard.colors = Interpolator.interpolate(0xef221f, 0x1fef76, meetups.size() + 1);
+            MeetupCard.colors = ColorGenerator.generate(meetups.size());
             RecyclerView meetupContainer = findViewById(R.id.MeetupContainer);
             meetupContainer.setLayoutManager(new LinearLayoutManager(this));
             meetupContainer.setAdapter(new MeetupCard(this, meetups));
